@@ -1,5 +1,32 @@
 .nav-bar {
-  height: $common-spacing * 2;
+  height: $common-spacing * 5;
   width: 100vw;
   background-color: white;
+
+  //layout properties
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  &-location {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &-location-selector-icon {
+    align-self: center;
+    padding-left: 10px;
+  }
+
+  &-search-icon {
+    padding-right: $common-spacing;
+    font-size: x-large;
+  }
+
+  &-heading {
+    font-size: 32px;
+    font-weight: bold;
+    padding-left: $common-spacing;
+  }
 }
