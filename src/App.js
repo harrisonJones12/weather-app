@@ -1,4 +1,5 @@
 import React from "react";
+import "icons/fontawesome";
 
 import Home from "components/Home";
 
