@@ -1,0 +1,56 @@
+.next-day-forecast {
+  &-container {
+    margin-top: $common-spacing;
+  }
+
+  &-next-day-info {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    height: auto;
+
+    .heading {
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .type-of-day-high-low {
+      display: flex;
+      flex-flow: row wrap;
+      width: 25%;
+      justify-content: space-between;
+
+      .conditions {
+        display: flex;
+      }
+      //   .sun-icon {
+      //     align-self: center;
+      //   }
+    }
+  }
+
+  &-next-day-heading {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-atmosphere-conditions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-days-of-the-week-cards {
+    margin-top: 20px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .card {
+      background-color: white;
+      height: auto;
+    }
+  }
+}
