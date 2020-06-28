@@ -43,7 +43,7 @@
 
   &-days-of-the-week-cards {
     margin-top: 20px;
-    height: 200px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -51,6 +51,9 @@
     .card {
       background-color: white;
       height: auto;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
     }
   }
 }
