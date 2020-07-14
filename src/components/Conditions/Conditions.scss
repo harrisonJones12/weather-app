@@ -1,0 +1,24 @@
+.conditions-container {
+  margin-top: $common-spacing;
+  &-main-info {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  justify-content: space-between;
+
+  &-temperature {
+    font-size: 70px;
+    font-weight: bold;
+  }
+
+  &-type-of-day-high-low {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 40%;
+  }
+  &-sun-icon {
+    font-size: xx-large;
+    align-self: center;
+  }
+}

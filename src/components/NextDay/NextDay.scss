@@ -36,6 +36,19 @@
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
+
+    // .wind, .chance-of-rain, .humidity {
+
+    // }
+
+    .atmosphere-conditions-icons {
+      margin-right: 10px;
+    }
+
+    .icon-number-group {
+      display: flex;
+      margin-top: 10px;
+    }
   }
 
   &-days-of-the-week-cards {
@@ -45,12 +58,30 @@
     flex-direction: column;
     justify-content: space-between;
 
+    @media (min-width: 768px) {
+      flex-direction: row;
+      height: auto;
+    }
+
     .card {
       background-color: white;
       height: auto;
       display: flex;
       justify-content: space-between;
       padding: 20px;
+
+      @media (min-width: 768px) {
+        width: 200px;
+        padding: 10px;
+      }
+
+      .icon-temperature-group {
+        display: flex;
+
+        .days-of-the-week-card-icons {
+          margin-left: 10px;
+        }
+      }
     }
   }
 }

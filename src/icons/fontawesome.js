@@ -4,6 +4,7 @@ import {
   faSearch,
   faChevronDown,
   faSun,
+  faUmbrella,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faSearch, faChevronDown, faSun);
+library.add(faSearch, faChevronDown, faSun, faUmbrella);
