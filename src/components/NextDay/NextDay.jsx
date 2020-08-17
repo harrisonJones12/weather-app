@@ -26,8 +26,8 @@ function NextDay() {
         <div className={`${baseClass}-next-day-heading`}>
           <h3 className="heading">Tomorrow</h3>
           <div className="type-of-day-high-low">
-            <p>26&deg; / 11&deg;</p>
             {icon("sun", "sun-icon")}
+            <p>26&deg; / 11&deg;</p>
           </div>
         </div>
         <p>
@@ -64,42 +64,42 @@ function NextDay() {
         <div className="card">
           <h3>Monday</h3>
           <div className="icon-temperature-group">
-            <p>26&deg; / 11&deg;</p>
+            <p className="temperature">26&deg; / 11&deg;</p>
             {icon("umbrella", "umbrella-icon days-of-the-week-card-icons")}
           </div>
         </div>
         <div className="card">
           <h3>Tuesday</h3>
           <div className="icon-temperature-group">
-            <p>26&deg; / 11&deg;</p>
+            <p className="temperature">26&deg; / 11&deg;</p>
             {icon("umbrella", "umbrella-icon days-of-the-week-card-icons")}
           </div>
         </div>
         <div className="card">
           <h3>Wednsday</h3>
           <div className="icon-temperature-group">
-            <p>26&deg; / 11&deg;</p>
+            <p className="temperature">26&deg; / 11&deg;</p>
             {icon("umbrella", "umbrella-icon days-of-the-week-card-icons")}
           </div>
         </div>
         <div className="card">
           <h3>Thursday</h3>
           <div className="icon-temperature-group">
-            <p>26&deg; / 11&deg;</p>
+            <p className="temperature">26&deg; / 11&deg;</p>
             {icon("umbrella", "umbrella-icon days-of-the-week-card-icons")}
           </div>
         </div>
         <div className="card">
           <h3>Friday</h3>
           <div className="icon-temperature-group">
-            <p>26&deg; / 11&deg;</p>
+            <p className="temperature">26&deg; / 11&deg;</p>
             {icon("umbrella", "umbrella-icon days-of-the-week-card-icons")}
           </div>
         </div>
         <div className="card">
           <h3>Saturday</h3>
           <div className="icon-temperature-group">
-            <p>26&deg; / 11&deg;</p>
+            <p className="temperature">26&deg; / 11&deg;</p>
             {icon("umbrella", "umbrella-icon days-of-the-week-card-icons")}
           </div>
         </div>
