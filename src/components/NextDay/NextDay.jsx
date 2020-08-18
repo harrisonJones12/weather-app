@@ -1,13 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import axios from "axios";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function NextDay() {
   const baseClass = "next-day-forecast";
 
+  const [data, setData] = useState();
+
+  const apiKey = "5baa93530010b59668748ece12db7b40";
+
+  useEffect(async () => {
+    try {
+      const result = await axios.get(
+        `https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&
+        exclude={part}&appid=${apiKey}`
+      );
+
+      setData(result.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   const icon = (iconName, className) => {
     return <FontAwesomeIcon icon={iconName} className={className} />;
   };
+
+  console.log(data);
 
   //   const daysOfTheWeek = ['Monday','Tuesday', 'Wednsday', 'Thursday', 'Friday'];
 
