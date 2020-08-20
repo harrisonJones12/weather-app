@@ -11,17 +11,20 @@ function NextDay() {
 
   const apiKey = "5baa93530010b59668748ece12db7b40";
 
-  useEffect(async () => {
-    try {
-      const result = await axios.get(
-        `https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&
-        exclude={part}&appid=${apiKey}`
-      );
+  useEffect(() => {
+    const fetchWeatherData = async () => {
+      try {
+        const result = await axios.get(
+          `https://api.openweathermap.org/data/2.5/onecall?lat={41.2901° N}&lon={lon}&
+          exclude={minutely}&appid=${apiKey}`
+        );
 
-      setData(result.data);
-    } catch (error) {
-      console.log(error);
-    }
+        setData(result.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchWeatherData();
   }, []);
 
   const icon = (iconName, className) => {
