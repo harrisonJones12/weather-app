@@ -1,6 +1,7 @@
 import React from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import SearchBar from "components/SearchBar/SearchBar";
 
 function Navbar() {
   const icon = (iconName, className) => {
@@ -15,7 +16,7 @@ function Navbar() {
         <h1 className={`${baseClass}-heading`}>Peekskill, NY</h1>
         {icon("chevron-down", `${baseClass}-location-selector-icon`)}
       </div>
-      {icon("search", `${baseClass}-search-icon`)}
+      <SearchBar />
     </div>
   );
 }

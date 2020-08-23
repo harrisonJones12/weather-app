@@ -70,21 +70,22 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 0 20px 0 20px;
 
     @media (min-width: 768px) {
       flex-direction: row;
       height: auto;
     }
 
-    @media (min-width: 768px) {
-      .card:nth-child(1) {
-        margin-left: 60px;
-      }
+    // @media (min-width: 768px) {
+    //   .card:nth-child(1) {
+    //     margin-left: 60px;
+    //   }
 
-      .card:last-child {
-        margin-right: 60px;
-      }
-    }
+    //   .card:last-child {
+    //     margin-right: 60px;
+    //   }
+    // }
 
     .card {
       background-color: white;

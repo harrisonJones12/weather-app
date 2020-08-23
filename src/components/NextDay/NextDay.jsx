@@ -7,31 +7,29 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function NextDay() {
   const baseClass = "next-day-forecast";
 
-  const [data, setData] = useState();
+  const [currentWeather, setCurrentWeather] = useState();
 
-  const apiKey = "5baa93530010b59668748ece12db7b40";
+  const apiKey = "ec4d4cf2d0df95b491df7f177eb42f95";
 
   useEffect(() => {
-    const fetchWeatherData = async () => {
+    const fetchCurrentWeatherData = async () => {
       try {
         const result = await axios.get(
-          `https://api.openweathermap.org/data/2.5/onecall?lat={41.2901° N}&lon={lon}&
-          exclude={minutely}&appid=${apiKey}`
+          `http://api.openweathermap.org/data/2.5/forecast?q=Peekskill&APPID=${apiKey}`
         );
 
-        setData(result.data);
+        setCurrentWeather(result.data);
       } catch (error) {
         console.log(error);
       }
     };
-    fetchWeatherData();
+    fetchCurrentWeatherData();
   }, []);
 
+  console.log("response", currentWeather);
   const icon = (iconName, className) => {
     return <FontAwesomeIcon icon={iconName} className={className} />;
   };
-
-  console.log(data);
 
   //   const daysOfTheWeek = ['Monday','Tuesday', 'Wednsday', 'Thursday', 'Friday'];
 
