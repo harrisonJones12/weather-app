@@ -2,6 +2,14 @@
   &-container {
     margin-top: $common-spacing;
 
+    .weather-details {
+      @media (min-width: 768px) {
+        display: flex;
+        justify-content: space-between;
+        margin: 70px 0 70px 0;
+      }
+    }
+
     @media (min-width: 768px) {
       display: flex;
       flex-direction: column;
@@ -12,8 +20,9 @@
     background-color: white;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 20px;
     height: auto;
+    border-radius: 10px;
 
     @media (min-width: 768px) {
       width: 600px;
