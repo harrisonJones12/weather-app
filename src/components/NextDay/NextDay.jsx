@@ -122,13 +122,6 @@ function NextDay() {
             {icon("umbrella", "umbrella-icon days-of-the-week-card-icons")}
           </div>
         </div>
-        <div className="card">
-          <h3>Saturday</h3>
-          <div className="icon-temperature-group">
-            <p className="temperature">26&deg;</p>
-            {icon("umbrella", "umbrella-icon days-of-the-week-card-icons")}
-          </div>
-        </div>
       </div>
     </div>
   );
