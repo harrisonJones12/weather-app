@@ -78,18 +78,20 @@
     height: 250px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    background-color: white;
+
     padding: 0 20px 0 20px;
 
     @media (min-width: 768px) {
       flex-direction: row;
       height: auto;
       align-self: center;
-      width: 70%;
+      width: 700px;
+      justify-content: space-between;
     }
 
-    @media (min-width: 1280px) {
-      align-self: center;
+    @media (min-width: 1080px) {
+      width: 100%;
     }
 
     // @media (min-width: 768px) {
@@ -112,10 +114,8 @@
 
       @media (min-width: 768px) {
         width: 200px;
-
         height: 200px;
         flex-direction: column;
-        flex: 0 0 auto;
         align-items: center;
         border-radius: 10px;
         margin-right: 20px;
