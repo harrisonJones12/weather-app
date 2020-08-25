@@ -1,6 +1,7 @@
 .current {
   display: flex;
   justify-content: space-between;
+  margin-left: 60px;
   padding: 30px;
   box-sizing: border-box;
 
@@ -13,6 +14,7 @@
   }
 
   &-temp-icon-group {
+    padding-left: 40px;
     .sun-icon {
       font-size: 70px;
     }
