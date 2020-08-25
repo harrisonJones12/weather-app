@@ -50,10 +50,6 @@ function NextDay() {
         <div className={`${baseClass}-next-day-info`}>
           <div className={`${baseClass}-next-day-heading`}>
             <h3 className="heading">Weather Details</h3>
-            <div className="type-of-day-high-low">
-              {icon("sun", "sun-icon")}
-              <p>26&deg; / 11&deg;</p>
-            </div>
           </div>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint
