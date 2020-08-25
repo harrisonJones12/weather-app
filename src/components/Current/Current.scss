@@ -1,12 +1,12 @@
 .current {
   display: flex;
   justify-content: space-between;
-  margin-left: 60px;
   padding: 30px;
   box-sizing: border-box;
 
   @media (min-width: 768px) {
     width: 300px;
+    margin-left: 60px;
   }
 
   &-temp {
