@@ -5,10 +5,10 @@ import NextDay from "components/NextDay/NextDay";
 
 function Home() {
   return (
-    <div>
+    <>
       <Navbar />
       <NextDay />
-    </div>
+    </>
   );
 }
 
