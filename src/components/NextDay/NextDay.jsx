@@ -9,42 +9,97 @@ import Current from "components/Current/Current.jsx";
 function NextDay() {
   const baseClass = "next-day-forecast";
 
-  const [currentWeather, setCurrentWeather] = useState(null);
+  const [currentWeather, setCurrentWeather] = useState({});
+  const [fiveDayForecast, setFiveDayForecast] = useState({});
 
   const apiKey = "ec4d4cf2d0df95b491df7f177eb42f95";
 
-  useEffect(() => {
-    const fetchCurrentWeatherData = async () => {
-      try {
-        const result = await axios.get(
-          `http://api.openweathermap.org/data/2.5/weather?q=Peekskill&units=imperial&APPID=${apiKey}`
-        );
+  const fetchCurrentWeatherData = async () => {
+    try {
+      const result = await axios.get(
+        `http://api.openweathermap.org/data/2.5/weather?q=Peekskill&units=imperial&APPID=${apiKey}`
+      );
 
-        if (result.data) {
-          setCurrentWeather(result.data);
-        }
-      } catch (error) {
-        console.log(error);
+      if (result.data) {
+        setCurrentWeather(result.data);
       }
-    };
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchFiveDayForecastData = async () => {
+    try {
+      const result = await axios.get(
+        `http://api.openweathermap.org/data/2.5/forecast?q=Peekskill&units=imperial&cnt=40&APPID=${apiKey}`
+      );
+
+      if (result.data) {
+        setFiveDayForecast(result.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
     fetchCurrentWeatherData();
+    fetchFiveDayForecastData();
   }, []);
 
-  console.log(
-    "current temp",
-    currentWeather && Math.floor(currentWeather.main.temp)
-  );
+  if (!currentWeather.main || !fiveDayForecast.list) {
+    return null;
+  }
 
   const icon = (iconName, className) => {
     return <FontAwesomeIcon icon={iconName} className={className} />;
   };
 
-  console.log("response", currentWeather);
+  const { main, weather } = currentWeather;
+
+  // console.log("response", main);
+
+  console.log(fiveDayForecast.list);
+
+  // const formatedDate = fiveDayForecast.list[0].dt_txt.substring(0, 10);
+
+  function getDayOfWeek(date) {
+    const dayOfWeek = new Date(date).getDay();
+    return isNaN(dayOfWeek)
+      ? null
+      : [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ][dayOfWeek];
+  }
+
+  const foreCastCards = () => {
+    fiveDayForecast.list.map((day) => {
+      const formatedDate = day.dt_txt.substring(0, 10);
+
+      console.log(getDayOfWeek(formatedDate));
+
+      return (
+        <div className="card" key={day}>
+          <h3>{getDayOfWeek(formatedDate)}</h3>
+          <div className="icon-temperature-group">
+            <p className="temperature">26&deg;</p>
+            {icon("umbrella", "umbrella-icon days-of-the-week-card-icons")}
+          </div>
+        </div>
+      );
+    });
+  };
 
   return (
     <div className={`${baseClass}-container`}>
       <div className="weather-details">
-        <Current />
+        <Current currentWeatherDetails={main} weatherDetails={weather[0]} />
 
         {/* Next day info card  */}
         <div className={`${baseClass}-next-day-info`}>
@@ -83,41 +138,7 @@ function NextDay() {
         </div>
       </div>
       <div className={`${baseClass}-days-of-the-week-cards`}>
-        <div className="card">
-          <h3>Monday</h3>
-          <div className="icon-temperature-group">
-            <p className="temperature">26&deg;</p>
-            {icon("umbrella", "umbrella-icon days-of-the-week-card-icons")}
-          </div>
-        </div>
-        <div className="card">
-          <h3>Tuesday</h3>
-          <div className="icon-temperature-group">
-            <p className="temperature">26&deg;</p>
-            {icon("umbrella", "umbrella-icon days-of-the-week-card-icons")}
-          </div>
-        </div>
-        <div className="card">
-          <h3>Wednsday</h3>
-          <div className="icon-temperature-group">
-            <p className="temperature">26&deg;</p>
-            {icon("umbrella", "umbrella-icon days-of-the-week-card-icons")}
-          </div>
-        </div>
-        <div className="card">
-          <h3>Thursday</h3>
-          <div className="icon-temperature-group">
-            <p className="temperature">26&deg;</p>
-            {icon("umbrella", "umbrella-icon days-of-the-week-card-icons")}
-          </div>
-        </div>
-        <div className="card">
-          <h3>Friday</h3>
-          <div className="icon-temperature-group">
-            <p className="temperature">26&deg;</p>
-            {icon("umbrella", "umbrella-icon days-of-the-week-card-icons")}
-          </div>
-        </div>
+        {foreCastCards()}
       </div>
     </div>
   );
