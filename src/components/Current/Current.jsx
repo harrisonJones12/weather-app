@@ -7,12 +7,12 @@ function Current({ currentWeatherDetails, weatherDetails }) {
     return <FontAwesomeIcon icon={iconName} className={className} />;
   };
 
-  const { temp, temp_min, feels_like } = currentWeatherDetails;
+  const { temp, temp_min } = currentWeatherDetails;
   const { description } = weatherDetails;
 
   const currentTemp = Math.floor(temp);
   const lowTemp = Math.floor(temp_min);
-  const feelsLike = Math.floor(feels_like);
+  // const feelsLike = Math.floor(feels_like);
 
   return (
     <div className="current">
@@ -20,7 +20,6 @@ function Current({ currentWeatherDetails, weatherDetails }) {
         <h1 className="current-temp">{`${currentTemp}`}&deg;</h1>
         <div className="current-temp-details">
           <p className="low-temp">{`low ${lowTemp}`}&deg;</p>
-          <p className="real-feel">{`feels like ${feelsLike}`}&deg;</p>
         </div>
       </div>
       <div className="current-temp-icon-group">

@@ -6,7 +6,8 @@
         justify-content: space-between;
         align-items: center;
         margin: 70px 0 60px 0;
-        min-height: calc(59vh - 70px);
+        padding-bottom: 250px;
+        // min-height: calc(59vh - 70px);
       }
     }
 
@@ -90,6 +91,7 @@
       margin: 0;
       justify-content: center;
       box-sizing: border-box;
+      padding: 20px;
     }
 
     // @media (min-width: 768px) {

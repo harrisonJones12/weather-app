@@ -55,13 +55,13 @@ function NextDay() {
     return <FontAwesomeIcon icon={iconName} className={className} />;
   };
 
-  const { main, weather } = currentWeather;
-
   // console.log("response", main);
 
-  console.log(fiveDayForecast.list);
+  // console.log(fiveDayForecast.list);
 
   // const formatedDate = fiveDayForecast.list[0].dt_txt.substring(0, 10);
+
+  console.log(currentWeather);
 
   function getDayOfWeek(date) {
     const dayOfWeek = new Date(date).getDay();
@@ -78,23 +78,40 @@ function NextDay() {
         ][dayOfWeek];
   }
 
+  const dailyData = fiveDayForecast.list.filter((reading) => {
+    return reading.dt_txt.includes("03:00:00");
+  });
+
+  // console.log(dailyData);
+
+  // for (var i = 0; i < fiveDayForecast.list.length; i += 8) {
+  //   console.log(fiveDayForecast.list[i].dt_txt);
+  // }
+
   const foreCastCards = () => {
-    fiveDayForecast.list.map((day) => {
+    return dailyData.map((day, index) => {
       const formatedDate = day.dt_txt.substring(0, 10);
 
-      console.log(getDayOfWeek(formatedDate));
+      const { main } = day;
 
+      const forecastTemp = Math.floor(main.temp);
+
+      // console.log(day);
       return (
-        <div className="card" key={day}>
+        <div className="card" key={index}>
           <h3>{getDayOfWeek(formatedDate)}</h3>
           <div className="icon-temperature-group">
-            <p className="temperature">26&deg;</p>
+            <p className="temperature">{forecastTemp}&deg;</p>
             {icon("umbrella", "umbrella-icon days-of-the-week-card-icons")}
           </div>
         </div>
       );
     });
   };
+
+  const { main, weather } = currentWeather;
+
+  const feelsLike = Math.floor(main.feels_like);
 
   return (
     <div className={`${baseClass}-container`}>
@@ -106,11 +123,6 @@ function NextDay() {
           <div className={`${baseClass}-next-day-heading`}>
             <h3 className="heading">Weather Details</h3>
           </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint
-            facilis dolore saepe illum ex id, similique adipisci nam quasi.
-            Soluta!
-          </p>
 
           <div className={`${baseClass}-atmosphere-conditions`}>
             <div className="wind">
@@ -120,18 +132,19 @@ function NextDay() {
                 <p>13 mph</p>
               </div>
             </div>
-            <div className="chance-of-rain">
-              <p>Chance of rain</p>
-              <div className="icon-number-group">
-                {icon("umbrella", "umbrella-icon atmosphere-conditions-icons")}
-                <p>53%</p>
-              </div>
-            </div>
+
             <div className="humidity">
               <p>Humidity</p>
               <div className="icon-number-group">
                 {icon("umbrella", "umbrella-icon atmosphere-conditions-icons")}
-                <p>13</p>
+                <p>{main.humidity}</p>
+              </div>
+            </div>
+            <div className="real-feel">
+              <p>Real Feel</p>
+              <div className="icon-number-group">
+                {icon("umbrella", "umbrella-icon atmosphere-conditions-icons")}
+                <p className="real-feel">{feelsLike}&deg;</p>
               </div>
             </div>
           </div>
