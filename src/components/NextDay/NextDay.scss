@@ -17,63 +17,63 @@
     }
   }
 
-  &-next-day-info {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    margin: 0 20px;
-    padding: 20px;
-    height: auto;
-    border-radius: 10px;
+  // &-next-day-info {
+  //   background-color: white;
+  //   display: flex;
+  //   flex-direction: column;
+  //   margin: 0 20px;
+  //   padding: 20px;
+  //   height: auto;
+  //   border-radius: 10px;
 
-    @media (min-width: 768px) {
-      width: 600px;
-      height: 200px;
+  //   @media (min-width: 768px) {
+  //     width: 600px;
+  //     height: 200px;
 
-      margin: 0 50px 0 50px;
-      box-sizing: border-box;
-    }
+  //     margin: 0 50px 0 50px;
+  //     box-sizing: border-box;
+  //   }
 
-    .heading {
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
+  //   .heading {
+  //     font-weight: bold;
+  //     margin-bottom: 20px;
+  //   }
 
-    .type-of-day-high-low {
-      display: flex;
-      flex-flow: row wrap;
-      width: 25%;
-      justify-content: space-between;
+  //   .type-of-day-high-low {
+  //     display: flex;
+  //     flex-flow: row wrap;
+  //     width: 25%;
+  //     justify-content: space-between;
 
-      .conditions {
-        display: flex;
-      }
-    }
-  }
+  //     .conditions {
+  //       display: flex;
+  //     }
+  //   }
+  // }
 
-  &-next-day-heading {
-    display: flex;
-    justify-content: space-between;
-  }
+  // &-next-day-heading {
+  //   display: flex;
+  //   justify-content: space-between;
+  // }
 
-  &-atmosphere-conditions {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
+  // &-atmosphere-conditions {
+  //   margin-top: 20px;
+  //   display: flex;
+  //   justify-content: space-between;
 
-    // .wind, .chance-of-rain, .humidity {
+  //   // .wind, .chance-of-rain, .humidity {
 
-    // }
+  //   // }
 
-    .atmosphere-conditions-icons {
-      margin-right: 10px;
-    }
+  //   .atmosphere-conditions-icons {
+  //     margin-right: 10px;
+  //   }
 
-    .icon-number-group {
-      display: flex;
-      margin-top: 10px;
-    }
-  }
+  //   .icon-number-group {
+  //     display: flex;
+  //     margin-top: 10px;
+  //   }
+  // }
 
   &-days-of-the-week-cards {
     margin-top: 20px;

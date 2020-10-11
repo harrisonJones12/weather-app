@@ -4,29 +4,12 @@ import axios from "axios";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Current from "components/Current/Current.jsx";
-
 function NextDay() {
   const baseClass = "next-day-forecast";
 
-  const [currentWeather, setCurrentWeather] = useState({});
   const [fiveDayForecast, setFiveDayForecast] = useState({});
 
   const apiKey = "ec4d4cf2d0df95b491df7f177eb42f95";
-
-  const fetchCurrentWeatherData = async () => {
-    try {
-      const result = await axios.get(
-        `http://api.openweathermap.org/data/2.5/weather?q=Peekskill&units=imperial&APPID=${apiKey}`
-      );
-
-      if (result.data) {
-        setCurrentWeather(result.data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const fetchFiveDayForecastData = async () => {
     try {
@@ -43,11 +26,10 @@ function NextDay() {
   };
 
   useEffect(() => {
-    fetchCurrentWeatherData();
     fetchFiveDayForecastData();
   }, []);
 
-  if (!currentWeather.main || !fiveDayForecast.list) {
+  if (!fiveDayForecast.list) {
     return null;
   }
 
@@ -60,8 +42,6 @@ function NextDay() {
   // console.log(fiveDayForecast.list);
 
   // const formatedDate = fiveDayForecast.list[0].dt_txt.substring(0, 10);
-
-  console.log(currentWeather);
 
   function getDayOfWeek(date) {
     const dayOfWeek = new Date(date).getDay();
@@ -109,50 +89,13 @@ function NextDay() {
     });
   };
 
-  const { main, weather } = currentWeather;
+  // const { main, weather } = currentWeather;
 
-  const feelsLike = Math.floor(main.feels_like);
+  // const feelsLike = Math.floor(main.feels_like);
 
   return (
-    <div className={`${baseClass}-container`}>
-      <div className="weather-details">
-        <Current currentWeatherDetails={main} weatherDetails={weather[0]} />
-
-        {/* Next day info card  */}
-        <div className={`${baseClass}-next-day-info`}>
-          <div className={`${baseClass}-next-day-heading`}>
-            <h3 className="heading">Weather Details</h3>
-          </div>
-
-          <div className={`${baseClass}-atmosphere-conditions`}>
-            <div className="wind">
-              <p>Wind</p>
-              <div className="icon-number-group">
-                {icon("umbrella", `umbrella-icon atmosphere-conditions-icons`)}
-                <p>13 mph</p>
-              </div>
-            </div>
-
-            <div className="humidity">
-              <p>Humidity</p>
-              <div className="icon-number-group">
-                {icon("umbrella", "umbrella-icon atmosphere-conditions-icons")}
-                <p>{main.humidity}</p>
-              </div>
-            </div>
-            <div className="real-feel">
-              <p>Real Feel</p>
-              <div className="icon-number-group">
-                {icon("umbrella", "umbrella-icon atmosphere-conditions-icons")}
-                <p className="real-feel">{feelsLike}&deg;</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={`${baseClass}-days-of-the-week-cards`}>
-        {foreCastCards()}
-      </div>
+    <div className={`${baseClass}-days-of-the-week-cards`}>
+      {foreCastCards()}
     </div>
   );
 }

@@ -2,4 +2,22 @@
   height: 100vh;
   position: relative;
   overflow-x: hidden;
+
+  .container {
+    .current-weather-details {
+      @media (min-width: 768px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 70px 0 60px 0;
+        padding-bottom: 250px;
+        // min-height: calc(59vh - 70px);
+      }
+    }
+
+    @media (min-width: 768px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }
