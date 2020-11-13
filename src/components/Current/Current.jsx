@@ -1,46 +1,43 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { WeatherContext } from "context/Context.js";
 
-import axios from "axios";
 
-function Current() {
+
+function Current({currentWeatherInfo}) {
   const icon = (iconName, className) => {
     return <FontAwesomeIcon icon={iconName} className={className} />;
   };
+console.log('lol',currentWeatherInfo)
+  // const apiKey = "ec4d4cf2d0df95b491df7f177eb42f95";
 
-  const [currentWeather, setCurrentWeather] = useState({});
+  // const fetchCurrentWeatherData = async () => {
+  //   try {
+  //     const result = await axios.get(
+  //       `http://api.openweathermap.org/data/2.5/weather?q=${state.location}&units=imperial&APPID=${apiKey}`
+  //     );
 
-  const { state } = useContext(WeatherContext);
+  //     if (result.data) {
+  //       setCurrentWeather(result.data);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  const apiKey = "ec4d4cf2d0df95b491df7f177eb42f95";
+  // useEffect(() => {
+  //   fetchCurrentWeatherData();
+  // }, []);
 
-  const fetchCurrentWeatherData = async () => {
-    try {
-      const result = await axios.get(
-        `http://api.openweathermap.org/data/2.5/weather?q=${state.location}&units=imperial&APPID=${apiKey}`
-      );
-
-      if (result.data) {
-        setCurrentWeather(result.data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchCurrentWeatherData();
-  }, []);
-
-  if (!currentWeather.main) {
+  if (!currentWeatherInfo?.main) {
     return null;
   }
 
-  const { main, weather } = currentWeather;
-
+  const { main, weather } = currentWeatherInfo;
+console.log('main', main);
+console.log('weather', weather);
   const { temp, temp_min, feels_like } = main;
   const { description } = weather[0];
 

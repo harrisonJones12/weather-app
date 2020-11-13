@@ -1,35 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import axios from "axios";
+// import axios from "axios";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function NextDay() {
+function NextDay({fiveDayWeatherInfo}) {
   const baseClass = "next-day-forecast";
 
-  const [fiveDayForecast, setFiveDayForecast] = useState({});
+  // const [fiveDayForecast, setFiveDayForecast] = useState({});
 
-  const apiKey = "ec4d4cf2d0df95b491df7f177eb42f95";
+  // const apiKey = "ec4d4cf2d0df95b491df7f177eb42f95";
 
-  const fetchFiveDayForecastData = async () => {
-    try {
-      const result = await axios.get(
-        `http://api.openweathermap.org/data/2.5/forecast?q=Peekskill&units=imperial&cnt=40&APPID=${apiKey}`
-      );
+  // const fetchFiveDayForecastData = async () => {
+  //   try {
+  //     const result = await axios.get(
+  //       `http://api.openweathermap.org/data/2.5/forecast?q=Peekskill&units=imperial&cnt=40&APPID=${apiKey}`
+  //     );
 
-      if (result.data) {
-        setFiveDayForecast(result.data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     if (result.data) {
+  //       setFiveDayForecast(result.data);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchFiveDayForecastData();
-  }, []);
+  // useEffect(() => {
+  //   fetchFiveDayForecastData();
+  // }, []);
 
-  if (!fiveDayForecast.list) {
+  if (!fiveDayWeatherInfo?.list) {
     return null;
   }
 
@@ -58,7 +58,7 @@ function NextDay() {
         ][dayOfWeek];
   }
 
-  const dailyData = fiveDayForecast.list.filter((reading) => {
+  const dailyData = fiveDayWeatherInfo.list.filter((reading) => {
     return reading.dt_txt.includes("03:00:00");
   });
 

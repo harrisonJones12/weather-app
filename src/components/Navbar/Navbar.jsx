@@ -1,14 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import SearchBar from "components/SearchBar/SearchBar";
 
-import { WeatherContext } from "context/Context.js";
+// import { WeatherContext } from "context/Context.js";
 
-function Navbar({location}) {
+function Navbar({intitialLocation, getWeather}) {
   const icon = (iconName, className) => {
     return <FontAwesomeIcon icon={iconName} className={className} />;
   };
+
+  const [location, setLocation] = useState(intitialLocation)
 
   const baseClass = "nav-bar";
 
@@ -18,7 +20,7 @@ function Navbar({location}) {
         <h1 className={`${baseClass}-heading`}>{location}</h1>
         {icon("chevron-down", `${baseClass}-location-selector-icon`)}
       </div>
-      <SearchBar />
+      <SearchBar getWeather={getWeather} setLocation={setLocation} location={location}/>
     </div>
   );
 }

@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
-import { WeatherContext } from "context/Context.js";
+// import { WeatherContext } from "context/Context.js";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function SearchBar() {
+function SearchBar({getWeather, setLocation, location}) {
   const searchRef = useRef(null);
   const [isIconClicked, setIsIconClicked] = useState();
-  const [location, setLocation] = useState();
+  // const [weatherlocation, setWeatherLocation] = useState();
 
   const icon = (iconName, className) => {
     return <FontAwesomeIcon icon={iconName} className={className} />;
@@ -34,7 +34,7 @@ function SearchBar() {
     setIsIconClicked(true);
   };
 
-  const { dispatch } = useContext(WeatherContext);
+  // const { dispatch } = useContext(WeatherContext);
 
   const handleLocationChange = (e) => {
     e.preventDefault();
@@ -42,9 +42,13 @@ function SearchBar() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setLocation(e.target.value);
-    dispatch({ type: "set-location", payload: location });
+    
+    if(e.key === 'Enter') {
+      e.preventDefault();
+      
+      getWeather(location);
+    }
+    // dispatch({ type: "set-location", payload: location });
   };
   return (
     <div className="search" onClick={() => searchClick()} ref={searchRef}>
@@ -55,7 +59,7 @@ function SearchBar() {
           className={isIconClicked ? "search-input-active" : "search-input"}
           name="search"
           onChange={(e) => handleLocationChange(e)}
-          onSubmit={(e) => handleSubmit(e)}
+          onKeyDown={(e) => handleSubmit(e)}
         />
       </form>
     </div>
