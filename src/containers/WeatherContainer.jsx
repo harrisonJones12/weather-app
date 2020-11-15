@@ -32,9 +32,6 @@ function WeatherContainer() {
           setCurrentWeather(currentWeather.data)
         }
     
-        // dispatch({ type: "set-currentDayWeather", payload: currentWeather});
-        // dispatch({ type: "set-fiveDayWeather", payload: fiveDayWeather});
-    
       } catch (error) {
         console.log(error);
       }
@@ -44,17 +41,19 @@ function WeatherContainer() {
       getWeather(intitialLocation)
     }, [])
 
-    // if(!state.currentWeather && !state.fiveDayForecast) {
-    //   return null;
-    // }
+
+    const isNight = () => {
+      var date = new Date();
+      return (date.getHours() > 22 || date.getHours() < 6);
+    }
 
     
     return (
-        <>
+        <div className={isNight() ?  "weather-container-night"  : "weather-container-day"}>
         <Navbar intitialLocation={intitialLocation} getWeather={getWeather} />
           <Current  currentWeatherInfo={currentWeather}/>
           <NextDay fiveDayWeatherInfo={fiveDayForecast}/>  
-        </>
+        </div>
     )
 }
 

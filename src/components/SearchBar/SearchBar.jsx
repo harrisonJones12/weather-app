@@ -7,6 +7,8 @@ function SearchBar({getWeather, setLocation, location}) {
   const searchRef = useRef(null);
   const [isIconClicked, setIsIconClicked] = useState();
 
+ 
+
   const icon = (iconName, className) => {
     return <FontAwesomeIcon icon={iconName} className={className} />;
   };
