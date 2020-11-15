@@ -1,5 +1,7 @@
 import React, {  useState, useEffect } from "react";
 
+import ReactLoading from 'react-loading';
+
 import axios from "axios";
 
 import Navbar from "components/Navbar/Navbar";
@@ -13,6 +15,7 @@ function WeatherContainer() {
 
     const [fiveDayForecast, setFiveDayForecast] = useState();
     const [currentWeather, setCurrentWeather] = useState();
+    const [dataLoaded, setDataLoaded] = useState()
     const intitialLocation = 'Boston';
 
 
@@ -30,7 +33,10 @@ function WeatherContainer() {
         if (currentWeather.data && fiveDayWeather.data) {
           setFiveDayForecast(fiveDayWeather.data)
           setCurrentWeather(currentWeather.data)
+          setDataLoaded(true);
         }
+
+        setDataLoaded(false);
     
       } catch (error) {
         console.log(error);
@@ -47,12 +53,20 @@ function WeatherContainer() {
       return (date.getHours() > 22 || date.getHours() < 6);
     }
 
+    const content = () => {
+      if(!dataLoaded) {
+        return <ReactLoading type="spin" color="#e6e6e6" height={document.documentElement.clientWidth} width={200} className="spinner" />
+      }
+
+      return(<><Current  currentWeatherInfo={currentWeather}/>
+        <NextDay fiveDayWeatherInfo={fiveDayForecast}/>  </>)
+    }
+
     
     return (
         <div className={isNight() ?  "weather-container-night"  : "weather-container-day"}>
         <Navbar intitialLocation={intitialLocation} getWeather={getWeather} />
-          <Current  currentWeatherInfo={currentWeather}/>
-          <NextDay fiveDayWeatherInfo={fiveDayForecast}/>  
+          {content()}
         </div>
     )
 }
