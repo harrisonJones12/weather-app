@@ -6,8 +6,6 @@ import Navbar from "components/Navbar/Navbar";
 import NextDay from "components/NextDay/NextDay";
 import Current from "components/Current/Current.jsx";
 
-// import { WeatherContext } from "context/Context.js";
-
 
 function WeatherContainer() {
 
@@ -15,7 +13,7 @@ function WeatherContainer() {
 
     const [fiveDayForecast, setFiveDayForecast] = useState();
     const [currentWeather, setCurrentWeather] = useState();
-    const [intitialLocation, setIntitialLocation] = useState('Boston')
+    const intitialLocation = 'Boston';
 
 
     const getWeather = async (location) => {

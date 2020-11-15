@@ -1,9 +1,14 @@
 .App {
-  height: 100vh;
-  position: relative;
-  overflow-x: hidden;
+  // position: relative;
+  // overflow-x: hidden;
+  background: linear-gradient(to top, #33ccff 0%, #ccffff 101%);
 
   .container {
+    padding-bottom: 20px;
+
+    @media (min-width: 768px) {
+      padding-bottom: 0;
+    }
     .current-weather-details {
       @media (min-width: 768px) {
         display: flex;

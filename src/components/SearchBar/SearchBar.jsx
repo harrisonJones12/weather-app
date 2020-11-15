@@ -1,13 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 
-// import { WeatherContext } from "context/Context.js";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function SearchBar({getWeather, setLocation, location}) {
   const searchRef = useRef(null);
   const [isIconClicked, setIsIconClicked] = useState();
-  // const [weatherlocation, setWeatherLocation] = useState();
 
   const icon = (iconName, className) => {
     return <FontAwesomeIcon icon={iconName} className={className} />;
@@ -34,21 +32,19 @@ function SearchBar({getWeather, setLocation, location}) {
     setIsIconClicked(true);
   };
 
-  // const { dispatch } = useContext(WeatherContext);
 
   const handleLocationChange = (e) => {
     e.preventDefault();
-    setLocation(e.target.value);
   };
 
   const handleSubmit = (e) => {
     
     if(e.key === 'Enter') {
+      setLocation(e.target.value);
       e.preventDefault();
       
       getWeather(location);
     }
-    // dispatch({ type: "set-location", payload: location });
   };
   return (
     <div className="search" onClick={() => searchClick()} ref={searchRef}>
