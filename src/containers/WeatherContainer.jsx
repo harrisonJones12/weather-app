@@ -15,7 +15,7 @@ function WeatherContainer() {
 
     const [fiveDayForecast, setFiveDayForecast] = useState();
     const [currentWeather, setCurrentWeather] = useState();
-    const [dataLoaded, setDataLoaded] = useState()
+    const [dataLoaded, setDataLoaded] = useState(false)
     const intitialLocation = 'Boston';
 
 
@@ -33,11 +33,10 @@ function WeatherContainer() {
         if (currentWeather.data && fiveDayWeather.data) {
           setFiveDayForecast(fiveDayWeather.data)
           setCurrentWeather(currentWeather.data)
-          setDataLoaded(true);
+          setDataLoaded(true)
         }
 
-        setDataLoaded(false);
-    
+
       } catch (error) {
         console.log(error);
       }
@@ -52,20 +51,20 @@ function WeatherContainer() {
       var date = new Date();
       return (date.getHours() > 22 || date.getHours() < 6);
     }
-
+    
     const content = () => {
-      if(!dataLoaded) {
-        return <ReactLoading type="spin" color="#e6e6e6" height={document.documentElement.clientWidth} width={200} className="spinner" />
+      if(dataLoaded) {
+        return(<><Current  currentWeatherInfo={currentWeather}/>
+          <NextDay fiveDayWeatherInfo={fiveDayForecast}/>  </>)
       }
 
-      return(<><Current  currentWeatherInfo={currentWeather}/>
-        <NextDay fiveDayWeatherInfo={fiveDayForecast}/>  </>)
+      return <ReactLoading type="spin" color="#e6e6e6" height={document.documentElement.clientHeight} width={200} className="spinner" />
     }
 
     
     return (
         <div className={isNight() ?  "weather-container-night"  : "weather-container-day"}>
-        <Navbar intitialLocation={intitialLocation} getWeather={getWeather} />
+        <Navbar intitialLocation={intitialLocation} getWeather={getWeather} setDataLoaded={setDataLoaded}/>
           {content()}
         </div>
     )

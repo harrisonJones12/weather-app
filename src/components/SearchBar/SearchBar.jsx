@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function SearchBar({getWeather, setLocation, location}) {
+function SearchBar({getWeather, setLocation, location, setDataLoaded}) {
   const searchRef = useRef(null);
   const [isIconClicked, setIsIconClicked] = useState();
 
@@ -44,7 +44,7 @@ function SearchBar({getWeather, setLocation, location}) {
     if(e.key === 'Enter') {
       setLocation(e.target.value);
       e.preventDefault();
-      
+      setDataLoaded(false)
       getWeather(location);
     }
   };

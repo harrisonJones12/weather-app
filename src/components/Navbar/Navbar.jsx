@@ -5,7 +5,7 @@ import SearchBar from "components/SearchBar/SearchBar";
 
 // import { WeatherContext } from "context/Context.js";
 
-function Navbar({intitialLocation, getWeather}) {
+function Navbar({intitialLocation, getWeather, setDataLoaded}) {
   const icon = (iconName, className) => {
     return <FontAwesomeIcon icon={iconName} className={className} />;
   };
@@ -20,7 +20,7 @@ function Navbar({intitialLocation, getWeather}) {
         <h1 className={`${baseClass}-heading`}>{location}</h1>
         {icon("chevron-down", `${baseClass}-location-selector-icon`)}
       </div>
-      <SearchBar getWeather={getWeather} setLocation={setLocation} location={location}/>
+      <SearchBar getWeather={getWeather} setLocation={setLocation} location={location} setDataLoaded={setDataLoaded}/>
     </div>
   );
 }
