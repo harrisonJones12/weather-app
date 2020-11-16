@@ -24,10 +24,10 @@ function WeatherContainer() {
         const apiKey = "ec4d4cf2d0df95b491df7f177eb42f95";
 
         const fiveDayWeather = await axios.get(
-          `http://api.openweathermap.org/data/2.5/forecast?q=${location}&units=imperial&cnt=40&APPID=${apiKey}`
+          `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=imperial&cnt=40&APPID=${apiKey}`
         );
         const currentWeather = await axios.get(
-          `http://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&APPID=${apiKey}`
+          `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&APPID=${apiKey}`
         );
     
         if (currentWeather.data && fiveDayWeather.data) {
@@ -51,7 +51,7 @@ function WeatherContainer() {
       var date = new Date();
       return (date.getHours() > 22 || date.getHours() < 6);
     }
-    
+
     const content = () => {
       if(dataLoaded) {
         return(<><Current  currentWeatherInfo={currentWeather}/>
