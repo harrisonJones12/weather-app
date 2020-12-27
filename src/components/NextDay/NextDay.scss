@@ -34,6 +34,11 @@
       justify-content: center;
       box-sizing: border-box;
       padding: 20px;
+
+      //styles to keep this section at the bottom of the page when not on medium size screens
+      left: 0;
+      bottom: 0;
+      position: fixed;
     }
 
     .card {

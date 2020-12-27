@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 function Current({currentWeatherInfo}) {
-  const icon = (iconName, className) => {
+  const fontAwesomeicon = (iconName, className) => {
     return <FontAwesomeIcon icon={iconName} className={className} />;
   };
 
@@ -19,7 +19,7 @@ function Current({currentWeatherInfo}) {
 console.log('main', main);
 console.log('weather', weather);
   const { temp, temp_min, feels_like } = main;
-  const { description } = weather[0];
+  const { description, icon } = weather[0];
 
   const currentTemp = Math.floor(temp);
   const lowTemp = Math.floor(temp_min);
@@ -37,7 +37,7 @@ console.log('weather', weather);
           <div className="wind">
             <p>Wind</p>
             <div className="icon-number-group">
-              {icon("umbrella", `umbrella-icon atmosphere-conditions-icons`)}
+              {fontAwesomeicon("umbrella", `umbrella-icon atmosphere-conditions-icons`)}
               <p>13 mph</p>
             </div>
           </div>
@@ -45,14 +45,14 @@ console.log('weather', weather);
           <div className="humidity">
             <p>Humidity</p>
             <div className="icon-number-group">
-              {icon("umbrella", "umbrella-icon atmosphere-conditions-icons")}
+              {fontAwesomeicon("umbrella", "umbrella-icon atmosphere-conditions-icons")}
               <p>{main.humidity}</p>
             </div>
           </div>
           <div className="real-feel">
             <p>Real Feel</p>
             <div className="icon-number-group">
-              {icon("umbrella", "umbrella-icon atmosphere-conditions-icons")}
+              {fontAwesomeicon("umbrella", "umbrella-icon atmosphere-conditions-icons")}
               <p className="real-feel">{feelsLike}&deg;</p>
             </div>
           </div>
@@ -71,7 +71,8 @@ console.log('weather', weather);
           </div>
         </div>
         <div className="current-temp-icon-group">
-          {icon("sun", "sun-icon")}
+          {/* {icon("sun", "sun-icon")} */}
+          <img src={`http://openweathermap.org/img/w/${icon}.png`} alt=""  />
           <p className="condition">{description}</p>
         </div>
       </div>

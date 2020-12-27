@@ -33,9 +33,11 @@ function NextDay({fiveDayWeatherInfo}) {
     return null;
   }
 
-  const icon = (iconName, className) => {
-    return <FontAwesomeIcon icon={iconName} className={className} />;
-  };
+
+  
+  // const nextDayFontAwesomeIcon = (iconName, className) => {
+  //   return <FontAwesomeIcon icon={iconName} className={className} />;
+  // };
 
   // console.log("response", main);
 
@@ -72,7 +74,10 @@ function NextDay({fiveDayWeatherInfo}) {
     return dailyData.map((day, index) => {
       const formatedDate = day.dt_txt.substring(0, 10);
 
-      const { main } = day;
+      const { main, weather } = day;
+      console.log('nextDay', weather);
+
+
 
       const forecastTemp = Math.floor(main.temp);
 
@@ -82,7 +87,8 @@ function NextDay({fiveDayWeatherInfo}) {
           <h3>{getDayOfWeek(formatedDate)}</h3>
           <div className="icon-temperature-group">
             <p className="temperature">{forecastTemp}&deg;</p>
-            {icon("umbrella", "umbrella-icon days-of-the-week-card-icons")}
+            {/* {nextDayFontAwesomeIcon("umbrella", "umbrella-icon days-of-the-week-card-icons")} */}
+            <img src={`http://openweathermap.org/img/w/${weather[0].icon}.png`} alt=""  className="umbrella-icon days-of-the-week-card-icons" />
           </div>
         </div>
       );

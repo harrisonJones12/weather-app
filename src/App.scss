@@ -1,5 +1,6 @@
 .App {
   overflow: hidden;
+  height: 100%;
 
   .spinner {
     margin: 0 auto;
@@ -23,6 +24,8 @@
       &-day,
       &-night {
         padding-bottom: 20px;
+
+        height: 100%;
 
         @media (min-width: 768px) {
           padding-bottom: 0;
