@@ -63,7 +63,7 @@ function WeatherContainer() {
 
     
     return (
-        <div className={!isNight() ?  "weather-container-night"  : "weather-container-day"}>
+        <div className={isNight() ?  "weather-container-night"  : "weather-container-day"}>
         <Navbar intitialLocation={intitialLocation} getWeather={getWeather} setDataLoaded={setDataLoaded}/>
           {content()}
         </div>
