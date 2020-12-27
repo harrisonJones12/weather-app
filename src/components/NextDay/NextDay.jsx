@@ -2,7 +2,7 @@ import React from "react";
 
 // import axios from "axios";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function NextDay({fiveDayWeatherInfo}) {
   const baseClass = "next-day-forecast";
